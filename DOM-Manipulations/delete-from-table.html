@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1" id="customers">
+    <tr><th>Name</th><th>Email</th></tr>
+    <tr><td>Eve</td><td>eve@gmail.com</td></tr>
+    <tr><td>Nick</td><td>nick@yahooo.com</td></tr>
+    <tr><td>Didi</td><td>didi@didi.net</td></tr>
+    <tr><td>Tedy</td><td>tedy@tedy.com</td></tr>
+</table>
+Email: <input type="text" name="email" />
+<button onclick="deleteByEmail()">Delete</button>
+<div id="result" />
+
+<script>
+    function deleteByEmail() {
+        let input = document.getElementsByName('email')[0].value;
+        let emails = document.querySelectorAll('#customers tr td:nth-child(2)');
+        let hasOccurrences = false;
+        for (let email of emails) {
+            if (email.textContent === input) {
+                deleteEmail(email);
+                document.getElementById('result').textContent = 'Deleted.';
+                hasOccurrences = true;
+            }
+        }
+
+        if (!hasOccurrences) {
+            document.getElementById('result').textContent = 'Not found.';
+        }
+
+        function deleteEmail(email) {
+            let currentRow = email.parentNode;
+            currentRow.parentNode.removeChild(currentRow);
+        }
+    }
+</script>
+</body>
+</html>

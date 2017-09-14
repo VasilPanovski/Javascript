@@ -1,0 +1,32 @@
+{{> header}}
+    {{#if username}}
+        <section id="viewCatalog">
+            <div class="posts">
+                {{#each posts}}
+                    <div class="col rank">
+                        <span>{{inc @index '+' 1}}</span>
+                    </div>
+                    {{> post}}
+                {{/each}}
+            </div>
+        </section>
+    {{else}}
+        <section id="viewWelcome">
+            <div class="welcome">
+                <div class="signup">
+                    {{> loginForm}}
+                    {{> registerForm}}
+                </div>
+
+                <div class="about">
+                    <h1>Welcome to SeenIt</h1>
+                    <p>
+                        Share interesting links and discuss great content. It's what's happening now.
+                    </p>
+                    <p>Sign in or sign up in a second.</p>
+                </div>
+            </div>
+        </section>
+    {{/if}}
+
+{{> footer}}

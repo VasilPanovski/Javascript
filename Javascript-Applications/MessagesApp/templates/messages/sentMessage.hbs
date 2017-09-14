@@ -1,0 +1,10 @@
+<tr>
+    {{#if sender_name}}
+        <td>{{sender_name}} {{sender_username}}</td>
+        {{else}}
+        <td>{{sender_username}}</td>
+    {{/if}}
+    <td>{{message}}</td>
+    <td>{{date}}</td>
+    <td data-id="{{_id}}"><button>Delete</button></td>
+</tr>

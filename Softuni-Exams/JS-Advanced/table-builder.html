@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Table Builder</title>
+    <style>td,th { background:#DDD; padding:5px }</style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<div id="main"></div>
+<script>
+    function tableBuilder(selector) {
+        return {
+            createTable: function () {
+                let tableHeaders = '<tr><th>Name</th><th>Town</th><th>Action</th></tr>';
+                let table = $('<table>').append(tableHeaders);
+                $('#main').append(table);
+            },
+            fillData: function (tableRows) {
+                for (let tableRow of tableRows) {
+                    let tds = `<td>${tableRow[0]}</td><td>${tableRow[1]}</td>`;
+                    let button = $('<button>').text('Delete').click(() => $(button).parent().parent().remove());
+
+                    let row = ($('<tr>')).append(tds, $('<td>').append(button));
+                    $('table').append(row)
+                }
+            }
+        }
+    }
+</script>
+<script>
+    $(function() {
+        let builder = tableBuilder("#main");
+        builder.createTable(['Name', 'Town']);
+        builder.fillData([
+            ['Maria', 'Sofia'],
+            ['Kiril', 'Varna'],
+            ['Ani <new>', 'Ruse'],
+        ]);
+    });
+</script>
+</body>
+</html>

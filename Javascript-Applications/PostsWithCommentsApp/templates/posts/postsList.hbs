@@ -1,0 +1,17 @@
+{{> header}}
+<section id="viewMyPosts">
+    {{#if isMyPosts}}
+        <div class="post post-content">
+            <h1>Your posts</h1>
+        </div>
+    {{/if}}
+    <div class="posts">
+        {{#each posts}}
+            <div class="col rank">
+                <span>{{inc @index '+' 1}}</span>
+            </div>
+            {{> post}}
+        {{/each}}
+    </div>
+</section>
+{{> footer}}
